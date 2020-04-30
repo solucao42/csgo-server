@@ -7,5 +7,7 @@ RUN dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install lib32gcc1 curl -y
 
+WORKDIR ${STEAMCMD_DIR}
+
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf - && \
-    mv linux32 ${STEAMCMD_DIR}
+    ln -s steamcmd.sh steamcmd

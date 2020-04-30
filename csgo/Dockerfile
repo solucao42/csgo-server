@@ -5,5 +5,4 @@ ENV STEAMAPPID=740
 
 RUN mkdir /opt/csgo
 
-RUN steamcmd +login anonymous +force_install_dir ${STEAMAPPDIR}
-RUN steamcmd +app_update ${STEAMAPPID} +quit
+RUN steamcmd +login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} validate +quit
