@@ -6,7 +6,7 @@ echo "========================================================================="
 
 srcds_run -game csgo \
           -console -autoupdate \
-          -steam_dir ${STEAMCMD_DIR} \
+          -steam_dir $STEAMCMD_DIR \
           -steamcmd_script csgo_update.txt \
           -usercon +fps_max $CSGO_FPSMAX \
           -tickrate $CSGO_TICKRATE \

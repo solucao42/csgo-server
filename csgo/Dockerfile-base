@@ -1,5 +1,7 @@
 FROM allanbatista/steamcmd
 
+EXPOSE 27015/tcp 27015/udp 27020/udp
+
 ENV CSGODIR=/opt/csgo
 ENV CSGOID=740
 ENV PATH="${CSGODIR}:${PATH}"
@@ -8,3 +10,12 @@ RUN mkdir ${CSGODIR}
 WORKDIR ${CSGODIR}
 
 RUN steamcmd +login anonymous +force_install_dir ${CSGODIR} +app_update ${CSGOID} validate +quit
+
+RUN { \
+        echo '@ShutdownOnFailedCommand 1'; \
+        echo '@NoPromptForPassword 1'; \
+        echo 'login anonymous'; \
+        echo 'force_install_dir /opt/csgo'; \
+        echo 'app_update 740'; \
+        echo 'quit'; \
+    } > ${CSGODIR}/csgo_update.txt

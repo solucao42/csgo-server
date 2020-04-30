@@ -15,7 +15,7 @@ ENV CSGO_FPSMAX=400 \
     CSGO_PASSWORD="" \
     CSGO_ADMIN_PASSWORD="" \
     CSGO_TOKEN="" \
-    CSGO_MAP="de_dust2"
+    CSGO_MAP=de_dust2
 
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
