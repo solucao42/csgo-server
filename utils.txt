@@ -1,0 +1,27 @@
+How to change the gamemode of the csgo server?
+
+
+
+    You can change the gamemode on your server on the fly by using the rcon commands:
+
+    rcon_password "yourRconPassword";
+    rcon game_mode 1;
+    rcon game_type 0;
+    rcon exec gamemode_competitive;
+    rcon mp_restartgame 1;
+
+    If you are adding this to the server.cfg via the web console you do not need the rcon part before each command and therefore it would be:
+    game_mode 1; 
+    game_type 0; 
+    exec gamemode_competitive;
+
+
+    For a list of the gamemodes/gametypes to configure your server to the disired mode please see below:
+
+     
+    Mode  	game_type  	game_mode
+    Classic Casual 	0 	0
+    Classic Competitive 	0 	1
+    Arms Race  	1 	0
+    Demolition  	1 	1
+    Deathmatch 	1 	2

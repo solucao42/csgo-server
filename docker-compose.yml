@@ -6,9 +6,18 @@ services:
     build:
       context: steamcmd
   
+  csgo-base:
+    image: allanbatista/csgo-base
+    build:
+      context: csgo
+      dockerfile: Dockerfile-base
+    depends_on: 
+      - steamcmd
+
   csgo:
     image: allanbatista/csgo
     build:
       context: csgo
+      dockerfile: Dockerfile
     depends_on: 
-      - steamcmd
+      - csgo-base

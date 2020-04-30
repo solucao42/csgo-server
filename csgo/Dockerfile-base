@@ -1,0 +1,10 @@
+FROM allanbatista/steamcmd
+
+ENV CSGODIR=/opt/csgo
+ENV CSGOID=740
+ENV PATH="${CSGODIR}:${PATH}"
+
+RUN mkdir ${CSGODIR}
+WORKDIR ${CSGODIR}
+
+RUN steamcmd +login anonymous +force_install_dir ${CSGODIR} +app_update ${CSGOID} validate +quit

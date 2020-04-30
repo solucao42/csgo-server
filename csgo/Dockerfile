@@ -1,8 +1,23 @@
-FROM allanbatista/steamcmd
+FROM allanbatista/csgo-base
 
-ENV STEAMAPPDIR=/opt/csgo
-ENV STEAMAPPID=740
+# https://developer.valvesoftware.com/wiki/Sv_region
 
-RUN mkdir /opt/csgo
+ENV CSGO_FPSMAX=400 \
+    CSGO_TICKRATE=128 \
+    CSGO_PORT=27015 \
+    CSGO_TV_PORT=27020 \
+    CSGO_CLIENT_PORT=27005 \
+    CSGO_MAXPLAYERS=10 \
+    CSGO_GAMETYPE=0 \
+    CSGO_GAMEMODE=1 \
+    CSGO_MAPGROUP=mg_active \
+    CSGO_REGION=2 \
+    CSGO_PASSWORD="" \
+    CSGO_ADMIN_PASSWORD="" \
+    CSGO_TOKEN="" \
+    CSGO_MAP="de_dust2"
 
-RUN steamcmd +login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} validate +quit
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT [ "entrypoint.sh" ]
