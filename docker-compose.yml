@@ -1,0 +1,14 @@
+version: "3.5"
+
+services:
+  steamcmd:
+    image: allanbatista/steamcmd
+    build:
+      context: steamcmd
+  
+  csgo:
+    image: allanbatista/csgo
+    build:
+      context: csgo
+    depends_on: 
+      - steamcmd
